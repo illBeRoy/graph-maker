@@ -830,6 +830,14 @@ function App() {
         >
           + Create new CSV
         </button>
+        <a 
+          href="https://gemini.google.com/gem/1iacXBByzAxhWjs-bIMprxGnhOYCBBM-a?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="create-new-btn gemini-btn"
+        >
+          ✨ Create with Gemini
+        </a>
         <input
           ref={fileInputRef}
           type="file"
