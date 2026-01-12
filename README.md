@@ -1,8 +1,16 @@
 # GraphMaker
 
+<p align="center">
+  <img src="public/og-image.png" alt="GraphMaker Preview" width="600" />
+</p>
+
 A visual tool for creating and editing flowcharts from CSV files.
 
 This app was 100% vibe coded with opus 4.5 in under an hour.
+
+[![get started with csv](./btn_csv.png)](https://graph-maker.site)
+
+[![get started with gemini](./btn_gemini.png)](https://gemini.google.com/gem/1iacXBByzAxhWjs-bIMprxGnhOYCBBM-a)
 
 ## Why
 
