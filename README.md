@@ -8,9 +8,13 @@ A visual tool for creating and editing flowcharts from CSV files.
 
 This app was 100% vibe coded with opus 4.5 in under an hour.
 
-[![get started with csv](./btn_csv.png)](https://graph-maker.site)
+<p align="center">
+<a href="https://graph-maker.site"><img src="btn_csv.png" width="200"></a>
+</p>
 
-[![get started with gemini](./btn_gemini.png)](https://gemini.google.com/gem/1iacXBByzAxhWjs-bIMprxGnhOYCBBM-a)
+<p align="center">
+<a href="https://gemini.google.com/gem/1iacXBByzAxhWjs-bIMprxGnhOYCBBM-a"><img src="btn_gemini.png" width="200"></a>
+</p>
 
 ## Why
 
