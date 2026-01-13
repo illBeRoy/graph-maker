@@ -609,15 +609,20 @@ function GraphView({
 
       const posChange = change as NodePositionChange
       const draggedNodeId = posChange.id
+      const draggedNode = nodes.find(node => node.id === draggedNodeId)!
       let { x, y } = change.position
+      
+      const draggedCenterX = x + draggedNode.measured!.width! / 2
 
       // Find snap targets from other nodes
       for (const node of nodes) {
         if (node.id === draggedNodeId) continue
 
-        // Snap X axis independently
-        if (Math.abs(node.position.x - x) < SNAP_THRESHOLD) {
-          x = node.position.x
+        // Snap X axis to center alignment
+        const nodeCenterX = node.position.x + node.measured!.width! / 2
+        if (Math.abs(nodeCenterX - draggedCenterX) < SNAP_THRESHOLD) {
+          // Align centers by setting x so that centers match
+          x = nodeCenterX - draggedNode.measured!.width! / 2;
         }
 
         // Snap Y axis independently
