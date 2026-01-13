@@ -726,10 +726,6 @@ function App() {
     setIsDragOver(false)
   }, [])
 
-  const handleClick = useCallback(() => {
-    fileInputRef.current?.click()
-  }, [])
-
   const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
@@ -806,6 +802,14 @@ function App() {
   return (
     <div className="app">
       <div className="upload-screen">
+        <a 
+          href="https://github.com/illBeRoy/graph-maker" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="github-banner"
+        >
+          Give us a ⭐️ on GitHub
+        </a>
         <a href="https://github.com/illBeRoy/graph-maker" target='_blank' style={{appearance: 'none', textDecoration: 'none'}}>
           <h1 className="upload-title">
             <span>graph</span>maker
@@ -814,22 +818,6 @@ function App() {
         <p className="upload-subtitle">
           Built with ♥ by <a href="https://www.linkedin.com/in/roysommer/" target="_blank" rel="noopener noreferrer">Roy Sommer</a>
         </p>
-        <div
-          className={`dropzone ${isDragOver ? 'drag-over' : ''}`}
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onClick={handleClick}
-        >
-          <UploadIcon />
-          <p className="dropzone-text">Drop a CSV file here, click to upload, or paste CSV data</p>
-        </div>
-        <button 
-          className="create-new-btn"
-          onClick={() => setShowTableMaker(true)}
-        >
-          + Create new CSV
-        </button>
         <a 
           href="https://gemini.google.com/gem/1iacXBByzAxhWjs-bIMprxGnhOYCBBM-a"
           target="_blank"
@@ -838,6 +826,18 @@ function App() {
         >
           ✨ Create with Gemini
         </a>
+        <button 
+          className="create-new-btn"
+          onClick={() => setShowTableMaker(true)}
+        >
+          + Create from Table
+        </button>
+        <button 
+          className="create-new-btn"
+          onClick={() => fileInputRef.current?.click()}
+        >
+          📂 Load CSV file
+        </button>
         <input
           ref={fileInputRef}
           type="file"

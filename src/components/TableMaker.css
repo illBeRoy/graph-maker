@@ -1,7 +1,8 @@
 .table-maker {
+  --padding: 24px;
+
   background: var(--bg-card);
   border-radius: 12px;
-  padding: 24px;
   max-width: 800px;
   width: 100%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
@@ -16,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 16px;
+  padding: var(--padding) var(--padding) 16px var(--padding);
   border-bottom: 1px solid var(--border);
 }
 
@@ -64,6 +65,10 @@
   padding: 12px 8px;
   text-align: left;
   border-bottom: 2px solid var(--border);
+}
+
+.mini-excel th.col-id {
+  text-align: center;
 }
 
 .mini-excel td {
@@ -221,7 +226,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
+  padding: 16px var(--padding) var(--padding) var(--padding);
   border-top: 1px solid var(--border);
   flex-shrink: 0;
 }

@@ -49,6 +49,27 @@
   text-decoration: underline;
 }
 
+.github-banner {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  padding: 0.5rem 1rem;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid var(--accent);
+  border-right: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  color: var(--text);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.github-banner:hover {
+  background: rgba(34, 211, 238, 0.2);
+  color: var(--accent);
+}
+
 .dropzone {
   width: min(90%, 500px);
   aspect-ratio: 16/9;
