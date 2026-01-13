@@ -738,6 +738,7 @@ function App() {
       const parsed = parseCSV(text)
       if (parsed.nodes.length > 0) {
         const layout = calculateTreeLayout(parsed)
+        window.location.hash = ''
         setGraphData(layout)
       }
     }
