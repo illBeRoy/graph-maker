@@ -16,6 +16,7 @@ import { toPng } from 'html-to-image'
 import '@xyflow/react/dist/style.css'
 import './App.css'
 import { TableMaker } from './components/TableMaker'
+import { GeminiLandingPage } from './components/GeminiLandingPage'
 
 // Types
 interface TreeNodeData {
@@ -695,7 +696,17 @@ function App() {
   const [graphData, setGraphData] = useState<{ nodes: Node[]; edges: Edge[] } | null>(null)
   const [isDragOver, setIsDragOver] = useState(false)
   const [showTableMaker, setShowTableMaker] = useState(false)
+  const [isGeminiPage, setIsGeminiPage] = useState(() => window.location.hash === '#gemini')
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  // Listen for hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      setIsGeminiPage(window.location.hash === '#gemini')
+    }
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
 
   const handleFile = useCallback((file: File) => {
     const reader = new FileReader()
@@ -706,24 +717,6 @@ function App() {
       setGraphData(layout)
     }
     reader.readAsText(file)
-  }, [])
-
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragOver(false)
-    const file = e.dataTransfer.files[0]
-    if (file && file.name.endsWith('.csv')) {
-      handleFile(file)
-    }
-  }, [handleFile])
-
-  const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragOver(true)
-  }, [])
-
-  const handleDragLeave = useCallback(() => {
-    setIsDragOver(false)
   }, [])
 
   const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -760,13 +753,13 @@ function App() {
     }
   }, [])
 
-  // Listen for paste events only when on the upload screen
+  // Listen for paste events on the upload screen and Gemini landing page
   useEffect(() => {
     if (!graphData && !showTableMaker) {
       document.addEventListener('paste', handlePaste)
       return () => document.removeEventListener('paste', handlePaste)
     }
-  }, [graphData, showTableMaker, handlePaste])
+  }, [graphData, showTableMaker, handlePaste, isGeminiPage])
 
   const memoizedGraphView = useMemo(() => {
     if (!graphData) return null
@@ -795,6 +788,14 @@ function App() {
             onCancel={() => setShowTableMaker(false)} 
           />
         </div>
+      </div>
+    )
+  }
+
+  if (isGeminiPage) {
+    return (
+      <div className="app">
+        <GeminiLandingPage />
       </div>
     )
   }
