@@ -475,15 +475,6 @@ function downloadCSV(content: string, filename: string) {
   URL.revokeObjectURL(url)
 }
 
-// Upload Icon
-function UploadIcon() {
-  return (
-    <svg className="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-    </svg>
-  )
-}
-
 // Snap threshold in pixels
 const SNAP_THRESHOLD = 15
 
@@ -694,7 +685,6 @@ function GraphView({
 // Main App Component
 function App() {
   const [graphData, setGraphData] = useState<{ nodes: Node[]; edges: Edge[] } | null>(null)
-  const [isDragOver, setIsDragOver] = useState(false)
   const [showTableMaker, setShowTableMaker] = useState(false)
   const [isGeminiPage, setIsGeminiPage] = useState(() => window.location.hash === '#gemini')
   const fileInputRef = useRef<HTMLInputElement>(null)
